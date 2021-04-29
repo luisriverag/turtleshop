@@ -1,0 +1,72 @@
+{{$ProductInventory := .}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ template "templates/base/head.html" . }}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>TurtleShop</title>
+  </head>
+  <body class="bg-dark text-light">
+    {{ template "templates/base/nav.html" . }}
+    <br><br><br>
+    <div class="row">
+      <div class="col-2"></div>
+    <div  class="col">
+      <h1 class="display-1">
+        <center>Store Items</center>
+      </h1>
+      <br>
+<br>
+
+<div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-4">
+{{ range . }}
+
+  <div class="col">
+    <div class="card shadow-sm text-dark bg-light  h-100">
+      <img src="{{ .ImgPath }}" class="card-img img-fluid" alt="...">
+      <div class="card-img-overlay">
+        <br>
+        <a href="/store/item/{{ .ID }}">
+        <h3 class="card-title">
+          <center class="text-light" style="text-shadow: 2px 2px 2px #000;">
+          <span class="shadow-lg badge rounded-pill bg-secondary">{{ .Name }}</span>
+          </center>
+        </h3>
+        <center class="text-light" style="text-shadow: 1px 1px 1px #000;">
+          <span class="shadow-lg badge rounded-pill bg-success">{{ .Cost }} TRTL</span>
+        </center>
+      </a>
+        <br>
+        <center>
+          <a href="/store/item/buy/{{ .ID }}">
+            <button class="btn shadow btn-sm btn-primary" value="BUY NOW">BUY NOW</button>
+          </a>
+          <!-- <a href="/#"><button class="btn shadow btn-sm btn-primary">BUY NOW</button></a> -->
+          <!-- <a href="/store/item/{{ .ID }}"><button class="btn shadow btn-sm btn-info">INFO</button></a> -->
+        </center>
+        <div style="padding:1em;margin:1em;" class="bg-light text-dark rounded">
+          <small>
+            <span class="text-muted" style="font-size:0.7em">SKU: {{ .SKU }} </span> 
+            <br>
+            {{ .Desc }}
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
+</div>
+
+    </div>
+    <div class="col-2"></div>
+    </div>
+    {{ template "templates/base/footer.html" . }}
+  </body>
+</html>

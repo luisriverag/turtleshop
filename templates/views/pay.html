@@ -1,0 +1,41 @@
+{{$encPaymentRequestResponse := .}}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ template "templates/base/head.html" . }}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Checkout | TurtleShop</title>
+  </head>
+  <body class="bg-dark text-light">
+    {{ template "templates/base/nav.html" . }}
+    <br><br><br>
+    <div class="container">
+
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <h1 class="display-1">
+          <center>Invoice</center> 
+        </h1>
+        <p class="lead">This invoice will be active for about 1 hour, or, in 120 blocks on the TRTL blockchain. Scan the QR Code to make payment, or use the details below.</p>
+        <p class="small"></p>
+        <h3 class="h3">Send your payment of {{ .CoinAmount }} TRTL to this address</h3>
+        <div class="card border-light bg-dark mb3 col" style="padding: 10px; word-wrap: break-word;">
+          <code>{{ .SendToAddr }}</code>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    </div>
+
+    {{ template "templates/base/footer.html" . }}
+  </body>
+</html>
